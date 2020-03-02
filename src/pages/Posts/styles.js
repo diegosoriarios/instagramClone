@@ -4,7 +4,7 @@ export const Post = styled.View`
     margin-top: 10px;
 `
 
-export const Header = styled.View`
+export const Header = styled.TouchableOpacity`
     padding: 15px;
     flex-direction: row;
     align-items: center;

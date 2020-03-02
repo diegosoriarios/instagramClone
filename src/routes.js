@@ -1,13 +1,15 @@
 import React from 'react'
 import { Image } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-const Stack = createStackNavigator();
+
+const Stack = createStackNavigator()
 
 import logo from './assets/instagram.png'
 
 import Feed from './pages/Feed/'
+import Profile from './pages/Profile'
 
 const Routes = () => (
     <NavigationContainer>
@@ -23,6 +25,7 @@ const Routes = () => (
                     headerTitle: props => <Image source={logo} />,
                 }}
             />
+            <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
     </NavigationContainer>
 )
