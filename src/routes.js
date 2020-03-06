@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-native'
+import { Image, TouchableOpacity, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -10,6 +10,7 @@ import logo from './assets/instagram.png'
 
 import Feed from './pages/Feed/'
 import Profile from './pages/Profile'
+import Camera from './pages/Camera/index';
 
 const Routes = () => (
     <NavigationContainer>
@@ -21,11 +22,19 @@ const Routes = () => (
             <Stack.Screen 
                 name="Feed" 
                 component={Feed} 
-                options={{ 
+                options={({ navigation }) => ({
                     headerTitle: props => <Image source={logo} />,
-                }}
+                    headerLeft: () => (
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('Camera')}
+                        >
+                            <Text>Button</Text>
+                        </TouchableOpacity>
+                    ),
+                })}
             />
             <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Camera" component={Camera} />
         </Stack.Navigator>
     </NavigationContainer>
 )

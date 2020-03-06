@@ -4,7 +4,7 @@ import { StyleSheet, Animated, I18nManager } from 'react-native';
 import { Post, Header, Avatar, Name, Description } from './styles';
 import LazyImage from '../../components/LazyImage';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { RectButton, TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
+import { RectButton, TouchableHighlight } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Posts({ item, viewable }) {
