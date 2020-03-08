@@ -28,7 +28,7 @@ const Routes = () => (
                         <TouchableOpacity
                           onPress={() => navigation.navigate('Camera')}
                         >
-                            <Text>Button</Text>
+                            <Image source={require('./assets/icons/camera.png')} style={{ width: 25, height: 25, marginLeft: 15}} />
                         </TouchableOpacity>
                     ),
                 })}

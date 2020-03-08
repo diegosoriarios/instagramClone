@@ -39,7 +39,7 @@ export default function LazyImage({
                 source={source} 
                 ratio={aspectRatio} 
                 resizeMode="contain"
-                onLoadEnd={handleAnimate} 
+                onLoadEnd={handleAnimate}
             />
             }
         </Small>

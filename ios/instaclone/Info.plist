@@ -6,6 +6,12 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Hello App Display Name</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Precisamos do acesso da sua camera para tirar fotos</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Precisamos do acesso a suas fotos para posta-las</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Precisamos do acesso ao microfone para gravar a voz</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

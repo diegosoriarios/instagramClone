@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, Animated, I18nManager } from 'react-native';
+import { StyleSheet, Animated, I18nManager, TouchableOpacity, View, Image } from 'react-native';
 
-import { Post, Header, Avatar, Name, Description } from './styles';
+import { 
+	Post, 
+	Header, 
+	Avatar, 
+	Name, 
+	Description, 
+	Heart, 
+	DescriptionText, 
+	HeartBox,
+	ImageOverlay
+} from './styles';
 import LazyImage from '../../components/LazyImage';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton, TouchableHighlight } from 'react-native-gesture-handler';
@@ -11,45 +21,14 @@ export default function Posts({ item, viewable }) {
 	const [lastPress, setLastPress] = useState(0)
 	const [liked, setLiked] = useState(false)
 
-	const navigation = useNavigation();
 
-	renderLeftActions = (progress, dragX) => {
-		const trans = dragX.interpolate({
-		  inputRange: [0, 50, 100, 101],
-		  outputRange: [-20, 0, 0, 1],
-		});
-		return (
-		  <RectButton style={styles.leftAction} onPress={this.close}>
-			<Animated.Text
-			  style={[
-				styles.actionText,
-				{
-				  transform: [{ translateX: trans }],
-				},
-			  ]}>
-			  Archive
-			</Animated.Text>
-		  </RectButton>
-		);
-	  };
-	
-	  renderRightActions = (progress, dragX) => {
-		const scale = dragX.interpolate({
-		  inputRange: [-80, 0],
-		  outputRange: [1, 0],
-		  extrapolate: 'clamp',
-		});
-		return (
-		  <RectButton style={styles.rightAction} onPress={this.close}>
-		  </RectButton>
-		);
-	  };
+	const navigation = useNavigation();
 
 	function handleLikeAction() {
 		var delta = new Date().getTime() - lastPress
 
 		if (delta < 200) {
-			setLiked(!liked)
+			setLiked(!liked)				
 		}
 
 		setLastPress(new Date().getTime())
@@ -61,23 +40,29 @@ export default function Posts({ item, viewable }) {
 				<Avatar source={{ uri: item.author.avatar }} />
 				<Name>{item.author.name}</Name>
 			</Header>
-			<Swipeable 
-				renderLeftActions={renderLeftActions} 
-				renderRightActions={renderRightActions} 
-				leftThreshold={'100%'}
-			>
-				<TouchableHighlight onPress={handleLikeAction}>
+			<TouchableHighlight onPress={handleLikeAction}>
 					<LazyImage
 						aspectRatio={item.aspectRatio}
 						smallSource={{ uri: item.small }}
 						source={{ uri: item.image }}
 						shouldLoad={viewable.includes(item.id)}
 					/>
-				</TouchableHighlight>
-			</Swipeable>
+			</TouchableHighlight>
 			<Description>
-				{liked ? '<3' : ''}
-				<Name>{item.author.name}</Name> {item.description}
+				<HeartBox onPress={() => setLiked(!liked)}>
+					<TouchableOpacity onPress={() => setLiked(!liked)}>
+						<Heart
+							source={
+								liked
+								? require("../../assets/icons/heart/heart.png")
+								: require("../../assets/icons/heart/heart-outline.png")
+							}
+							resizeMode="cover"
+						/>
+					</TouchableOpacity>
+				</HeartBox>
+				<Name>{item.author.name}</Name> 
+				<DescriptionText>{item.description}</DescriptionText>
 			</Description>
 		</Post>
 	);
