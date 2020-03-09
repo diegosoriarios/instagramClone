@@ -67,24 +67,3 @@ export default function Posts({ item, viewable }) {
 		</Post>
 	);
 }
-
-const styles = StyleSheet.create({
-	leftAction: {
-		flex: 1,
-		backgroundColor: '#0f0',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
-	},
-	actionIcon: {
-		width: 30,
-		marginHorizontal: 10,
-	},
-	rightAction: {
-		alignItems: 'center',
-		flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
-		backgroundColor: '#dd2c00',
-		flex: 1,
-		justifyContent: 'flex-end',
-	},
-});
