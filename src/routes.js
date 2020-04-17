@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, TouchableOpacity, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -17,6 +17,7 @@ import Camera from './pages/Camera';
 let focus = 'HomePage'
 
 const HomePage = () => (
+
     <Stack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: "#f5f5f5"
@@ -55,6 +56,14 @@ const HomePage = () => (
 )
 
 function Routes() {
+    const [token, setToken] = useState(null)
+
+    if (token === null) {
+        return (
+            <h1>Login</h1>
+        )
+    }
+
     return (
         <NavigationContainer>
             <Tab.Navigator
